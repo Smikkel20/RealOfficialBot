@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
 load_dotenv()
 #get tokens from .env file
-TOKEN = os.getenv("TEST_TOKEN")
+TOKEN = os.getenv("REAL_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -44,7 +44,6 @@ async def on_command_error(ctx, error):
 
 @bot.event
 async def on_message(ctx):
-    print(ctx.content)
     message = str(ctx.content)
     if "hello there" in message.lower():
         em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
@@ -58,17 +57,17 @@ async def on_message(ctx):
 async def ping(ctx):
     await ctx.send(f'Pong! {round(bot.latency, 2)} ms!')
 
-@bot.command()
-async def reload(ctx):
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            try:
-                #reload extensions
-                bot.unload_extension(f"cogs.{filename[:-3]}")
-                bot.load_extension(f"cogs.{filename[:-3]}")
-                await ctx.send(f"Reloaded {filename[:-3]}")
-            except Exception as e:
-                print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
+#@bot.command()
+#async def reload(ctx):
+#    for filename in os.listdir("./cogs"):
+#        if filename.endswith(".py"):
+#            try:
+#                #reload extensions
+#                bot.unload_extension(f"cogs.{filename[:-3]}")
+#                bot.load_extension(f"cogs.{filename[:-3]}")
+#                await ctx.send(f"Reloaded {filename[:-3]}")
+#            except Exception as e:
+#                print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
 
 
 
