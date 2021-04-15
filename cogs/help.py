@@ -13,8 +13,8 @@ class Helpcommand(commands.Cog):
     @commands.command()
     async def help(self, ctx):
         em = discord.Embed(title = "Help", color = discord.Color.blue())
-        em.add_field(name = "`;sw`", value = "use `;sw`, `;starwars` for starwars quotes")
-        em.add_field(name = "`;q`", value = "use `;q`, `;quotes` for official sexy quotes")
+        em.add_field(name = "`;sw`", value = "use `;sw`, `;starwars` for starwars quotes", inline=False)
+        em.add_field(name = "`;q`", value = "use `;q`, `;quotes` for official sexy quotes", inline=False)
         await ctx.send(embed = em)
 
 def setup(bot):
