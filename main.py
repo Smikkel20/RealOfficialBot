@@ -45,6 +45,12 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_message(ctx):
     message = str(ctx.content)
+
+    if ctx.channel.name == 'super-secret-quotes':
+        with open("quotes2.txt", "a") as q:
+            q.write(f"{message}\n")
+            q.close
+
     if "hello there" in message.lower():
         em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
         await ctx.channel.send(embed = em)
