@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
 load_dotenv()
 #get tokens from .env file
-TOKEN = os.getenv("REAL_TOKEN")
+TOKEN = os.getenv("TEST_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -41,6 +41,18 @@ async def on_command_error(ctx, error):
         return
     else:
         raise error
+
+@bot.event
+async def on_message(ctx):
+    print(ctx.content)
+    message = str(ctx.content)
+    if "hello there" in message.lower():
+        em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
+        await ctx.channel.send(embed = em)
+        em = discord.Embed(description = f"You are a blod one." ,color = discord.Color.red())
+        await ctx.channel.send(embed = em)
+
+    await bot.process_commands(ctx)
 
 @bot.command()
 async def ping(ctx):
