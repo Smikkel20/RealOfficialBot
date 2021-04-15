@@ -6,8 +6,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from keep_alive import keep_alive
 
-bot = commands.Bot(command_prefix = "!", case_insensitive = True)
-#bot.remove_command("help")
+bot = commands.Bot(command_prefix = ";", case_insensitive = True)
+bot.remove_command("help")
 
 if __name__ == "__main__":
     #get every file in ./cogs dir
