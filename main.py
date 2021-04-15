@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
 load_dotenv()
 #get tokens from .env file
-TOKEN = os.getenv("REAL_TOKEN")
+TOKEN = os.getenv("TEST_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -52,6 +52,14 @@ async def on_message(ctx):
         await ctx.channel.send(embed = em)
 
     await bot.process_commands(ctx)
+
+@bot.command()
+async def bible(ctx):
+    em = em = discord.Embed(
+        name = "The real official bible",
+        description = f"[The real official bible](https://docs.google.com/document/d/1IqqL4FtKwvp9mmO2QAljmAGeadSCI2bu1C7W-OSXwig/edit?usp=drivesdk)" ,color = discord.Color.red())
+    
+    await ctx.send(embed = em)
 
 @bot.command()
 async def ping(ctx):
