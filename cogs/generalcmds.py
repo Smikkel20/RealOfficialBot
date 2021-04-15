@@ -32,7 +32,7 @@ class cmds(commands.Cog):
         em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
 
         await ctx.send(embed = em)
-        if quote == "Hello There."
+        if quote == "Hello There.":
             em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
             await ctx.send(embed = em)
     
