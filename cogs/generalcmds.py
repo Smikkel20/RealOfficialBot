@@ -26,13 +26,15 @@ class cmds(commands.Cog):
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
 
-    @commands.command(aliases = ["swquotes", "starwars", "starwarsquotes", "sw"])
+    @commands.command(aliases = ["swquotes", "starwars", "starwarsquotes", "sw", "swq"])
     async def _sw(self, ctx):
         quote = random.choice(quotes)
-        
         em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
 
         await ctx.send(embed = em)
+        if quote == "Hello There."
+            em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
+            await ctx.send(embed = em)
     
     @commands.command(aliases = ["quote", "quotes", "q", "rq"])
     async def _quote(self, ctx):
