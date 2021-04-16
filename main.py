@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
 load_dotenv()
 #get tokens from .env file
-TOKEN = os.getenv("TEST_TOKEN")
+TOKEN = os.getenv("REAL_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -50,6 +50,12 @@ async def on_message(ctx):
         with open("quotes2.txt", "a") as q:
             q.write(f"{message}\n")
             q.close
+            for filename in os.listdir("./cogs"):
+                if filename.endswith("generalcmds.py"):
+                    #reload extensions
+                    bot.unload_extension(f"cogs.{filename[:-3]}")
+                    bot.load_extension(f"cogs.{filename[:-3]}")
+
 
     if "hello there" in message.lower():
         em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
