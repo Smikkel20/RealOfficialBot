@@ -56,6 +56,9 @@ async def on_message(ctx):
                     bot.unload_extension(f"cogs.{filename[:-3]}")
                     bot.load_extension(f"cogs.{filename[:-3]}")
 
+    if "hoe werkt seks" in message.lower():
+        em = discord.Embed(description = f"Zelfs ik weet het niet." ,color = discord.Color.red())
+        await ctx.channel.send(embed = em)
 
     if "hello there" in message.lower():
         em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
