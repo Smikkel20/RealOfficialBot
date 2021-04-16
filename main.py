@@ -75,7 +75,8 @@ async def bible(ctx):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(f'Pong! {round(bot.latency, 2)} ms!')
+    await ctx.send(
+        f'Pong! {round(bot.latency, 2)} ms!')
 
 #@bot.command()
 #async def reload(ctx):
