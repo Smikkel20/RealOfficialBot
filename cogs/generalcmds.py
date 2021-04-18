@@ -4,30 +4,46 @@ import random
 import json
 import requests
 import io
+import sys
 from bs4 import BeautifulSoup
 from discord.ext.commands import Bot
 from discord.ext import commands
 
-with open("quotes.txt", "r") as q:
+with open("txt/quotes.txt", "r") as q:
     quotes = []
     for line in q:
         line = line.strip()
         if line:
             quotes.append(line)
-    
-    q.close
 
-with open("quotes2.txt", "r") as q:
+with open("txt/quotes2.txt", "r") as q:
     quotes2 = []
     for line in q:
         line = line.strip()
         if line:
             quotes2.append(line)
 
+with open("txt/banaan.txt", "r") as q:
+    banaan = []
+    for line in q:
+        line = line.strip()
+        if line:
+            banaan.append(line)
+
 class cmds(commands.Cog):
     
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
+
+    @commands.command(aliases = ["banaan", "bananen", "banan"])
+    async def _banaan(self, ctx):
+        photo = random.choice(banaan)
+        
+        em = discord.Embed(color = discord.Color.blue())
+        em.set_image(url=f"{photo}")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
 
     @commands.command(aliases = ["bans"])
     async def _bans(self,ctx):
@@ -37,11 +53,11 @@ class cmds(commands.Cog):
         soup = BeautifulSoup(page.content, 'html.parser')
         results = soup.find_all("script", type='text/javascript')
 
-        with io.open("html.txt", "w", encoding="utf-8") as f:
+        with io.open("txt/html.txt", "w", encoding="utf-8") as f:
             f.write(str(results))
             f.close
 
-        f = io.open("html.txt", "r", encoding="utf-8")
+        f = io.open("txt/html.txt", "r", encoding="utf-8")
         File = str(f.read())
         people = []
         number = 0
@@ -77,12 +93,12 @@ class cmds(commands.Cog):
                 name = i
         await ctx.send(embed = em)        
             
-
     @commands.command(aliases = ["swquotes", "starwars", "starwarsquotes", "sw", "swq"])
     async def _sw(self, ctx):
         quote = random.choice(quotes)
-        em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
 
+        em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
+        
         await ctx.send(embed = em)
         if quote == "Hello There.":
             em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
@@ -93,7 +109,7 @@ class cmds(commands.Cog):
         quote = random.choice(quotes2)
         
         em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
-
+        
         await ctx.send(embed = em)
 
 
