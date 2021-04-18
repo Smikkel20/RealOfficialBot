@@ -1,6 +1,8 @@
 import os
 import discord
 import sys
+import random
+#from globalfunc import open_account, get_bank_data, skill_lvlup, lvlup, update_bank
 from discord.ext.commands import Bot
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -8,6 +10,13 @@ from keep_alive import keep_alive
 
 bot = commands.Bot(command_prefix = ";", case_insensitive = True)
 bot.remove_command("help")
+
+with open("txt/seks.txt", "r") as q:
+    seks = []
+    for line in q:
+        line = line.strip()
+        if line:
+            seks.append(line)
 
 if __name__ == "__main__":
     #get every file in ./cogs dir
@@ -45,19 +54,30 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_message(ctx):
     message = str(ctx.content)
-
-    if ctx.channel.name == 'super-secret-quotes':
-        with open("quotes2.txt", "a") as q:
-            q.write(f"{message}\n")
-            q.close
-            for filename in os.listdir("./cogs"):
-                if filename.endswith("generalcmds.py"):
-                    #reload extensions
-                    bot.unload_extension(f"cogs.{filename[:-3]}")
-                    bot.load_extension(f"cogs.{filename[:-3]}")
+    if ctx.author.bot:
+        return
+    #open_account(ctx.author)
+    #users = get_bank_data()
+    try:
+        if ctx.channel.name == 'super-secret-quotes':
+            with open("quotes2.txt", "a") as q:
+                q.write(f"{message}\n")
+                q.close
+                for filename in os.listdir("./cogs"):
+                    if filename.endswith("generalcmds.py"):
+                        #reload extensions
+                        bot.unload_extension(f"cogs.{filename[:-3]}")
+                        bot.load_extension(f"cogs.{filename[:-3]}")
+    except AttributeError:
+        dm = True
 
     if "hoe werkt seks" in message.lower():
-        em = discord.Embed(description = f"Zelfs ik weet het niet." ,color = discord.Color.red())
+        text = random.choice(seks)
+        getal = random.randint(1,100)
+        if getal == 1:
+            em = discord.Embed(description = f"Waar ben ik toch ook mee bezig." ,color = discord.Color.red())
+        else:
+            em = discord.Embed(description = f"{text}" ,color = discord.Color.red())
         await ctx.channel.send(embed = em)
 
     if "hello there" in message.lower():
@@ -65,7 +85,6 @@ async def on_message(ctx):
         await ctx.channel.send(embed = em)
         em = discord.Embed(description = f"You are a blod one." ,color = discord.Color.red())
         await ctx.channel.send(embed = em)
-
     await bot.process_commands(ctx)
 
 @bot.command()
