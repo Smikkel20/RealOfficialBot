@@ -3,6 +3,9 @@
 pyproject.toml
 poetry.lock
 
+#so the test database doesnt get pushed
+mainbank.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
