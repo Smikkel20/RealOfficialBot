@@ -56,8 +56,8 @@ async def on_message(ctx):
     message = str(ctx.content)
     if ctx.author.bot:
         return
-    #open_account(ctx.author)
-    #users = get_bank_data()
+    open_account(ctx.author)
+    users = get_bank_data()
     try:
         if ctx.channel.name == 'super-secret-quotes':
             with open("quotes2.txt", "a") as q:
