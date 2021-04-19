@@ -1,5 +1,2 @@
-<<<<<<< Updated upstream
-{}
-=======
 {"335427967490588672": {"bal": 10000798950, "lvl": 15, "lvlprogress": 4087.9421031309575, "Skills": {"pickpocketskill": {"lvl": 1, "lvlprogress": 0, "boost": 5}, "lockpickskill": {"lvl": 15, "lvlprogress": 2110.0527973635903, "boost": 75, "trainitem": true}}, "items": {"weed": 0, "lockpick": 11}}, "416632120295817216": {"bal": 0, "lvl": 1, "lvlprogress": 0, "Skills": {"pickpocketskill": {"lvl": 1, "lvlprogress": 0, "boost": 5}, "lockpickskill": {"lvl": 1, "lvlprogress": 0, "boost": 5, "trainitem": false}}, "items": {"weed": 0, "lockpick": 1}}}
->>>>>>> Stashed changes
+
