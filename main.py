@@ -2,7 +2,7 @@ import os
 import discord
 import sys
 import random
-#from globalfunc import open_account, get_bank_data, skill_lvlup, lvlup, update_bank
+from globalfunc import open_account, get_bank_data, skill_lvlup, lvlup, update_bank
 from discord.ext.commands import Bot
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -60,7 +60,7 @@ async def on_message(ctx):
     users = get_bank_data()
     try:
         if ctx.channel.name == 'super-secret-quotes':
-            with open("quotes2.txt", "a") as q:
+            with open("txt/quotes2.txt", "a") as q:
                 q.write(f"{message}\n")
                 q.close
                 for filename in os.listdir("./cogs"):
