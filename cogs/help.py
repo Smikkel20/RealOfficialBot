@@ -18,6 +18,8 @@ class Helpcommand(commands.Cog):
         em.add_field(name = "`;q`", value = "use `;q`, `;quotes` for official sexy quotes", inline=False)
         em.add_field(name = "`;bans`", value = "use `;bans` to see how many bans everyone has!", inline=False)
         em.add_field(name = "`;banaan`", value = "use `;banaan`, `;bananen` to get photos of a beautyfull banana!", inline=False)
+        em.add_field(name= "Links", value = "Sourcecode: [Github](https://github.com/Smikkel20/RealOfficialBot)", inline=False)
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
         await ctx.send(embed = em)
 
 def setup(bot):
