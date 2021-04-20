@@ -25,8 +25,8 @@ def open_account(user):
         users[str(user.id)]["Skills"]["lockpickskill"] = {}
         users[str(user.id)]["Skills"]["lockpickskill"]["lvl"] = 1
         users[str(user.id)]["Skills"]["lockpickskill"]["lvlprogress"] = 0
-        users[str(user.id)]["Skills"]["lockpickSkill"]["boost"] = 5
-        users[str(user.id)]["Skills"]["lockpickSkill"]["trainitem"] = False
+        users[str(user.id)]["Skills"]["lockpickskill"]["boost"] = 5
+        users[str(user.id)]["Skills"]["lockpickskill"]["trainitem"] = False
         #user items
         users[str(user.id)]["items"] = {}
         users[str(user.id)]["items"]["weed"] = 0
