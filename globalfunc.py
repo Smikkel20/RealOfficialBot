@@ -83,7 +83,10 @@ async def lvlup(ctx, user, xp):
 async def skill_lvlup(ctx, user, skill, xp):
     open_account(user)
     users = get_bank_data()
-
+    if skill == None:
+        users[str(user.id)]["Skills"]["pickpocketskill"]["boost"] = 5*int(users[str(user.id)]["Skills"]["pickpocketskill"]["lvl"])
+        users[str(user.id)]["Skills"]["lockpickskill"]["boost"] = 5*int(users[str(user.id)]["Skills"]["lockpickskill"]["lvl"])
+        return
     user_skill = users[str(user.id)]["Skills"][skill]
 
     user_skill["lvlprogress"] += xp
