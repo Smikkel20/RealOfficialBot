@@ -14,18 +14,24 @@ class Eco(commands.Cog):
         self.bot = bot
     
     @commands.command(aliases = ["give"])
-    async def _give(self, ctx, give = 0):
-        open_account(ctx.author)
-        user = ctx.author
+    async def _give(self, ctx, give = 0, user:discord.Member = None):
+        if ctx.author.id != 335427967490588672:
+            await ctx.send("Only Smikkel20 can give people money")
+            return
+        if user == None:
+            user = ctx.author
+
+        open_account(user)
         users = get_bank_data()
 
         update_bank(user, give)
+
+        await ctx.send(f"succesfully gave {user.mention} {give} eendheid")
 
 
 
     @commands.command(aliases = ["b", 'bal', 'balance'])
     async def _bal(self, ctx, user:discord.Member = None):
-        print(user)
         if user == None:
             user = ctx.author
 
