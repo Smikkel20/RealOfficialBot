@@ -58,6 +58,8 @@ async def on_message(ctx):
         return
     open_account(ctx.author)
     users = get_bank_data()
+    await lvlup(ctx, ctx.author, 0)
+    await skill_lvlup(ctx, ctx.author, None, 0)
     try:
         if ctx.channel.name == 'super-secret-quotes':
             with open("txt/quotes2.txt", "a") as q:
