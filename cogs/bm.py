@@ -61,13 +61,13 @@ class bm(commands.Cog):
             name = name.lower()
             
             if ID == "003":
-                lockpickitem = users[str(user.id)]["Skills"]["LockpickSkill"]["trainitem"]
+                lockpickitem = users[str(user.id)]["Skills"]["lockpickskill"]["trainitem"]
                 if lockpickitem == True:
                     await ctx.send(f"Je hebt de {name} al gekocht, gebruik `;train lockpick` om hem te gebruiken.")
                     return
                 else:
                     users[str(user.id)]["bal"] -= price
-                    users[str(user.id)]["Skills"]["LockpickSkill"]["trainitem"] = True
+                    users[str(user.id)]["Skills"]["lockpickskill"]["trainitem"] = True
                     em = discord.Embed(description = f"Je hebt succesvol een {name} gekocht, gebruik `;train lockpick` om hem te gebruiken.",color = discord.Color.blue())
             else:
 
