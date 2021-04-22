@@ -30,10 +30,26 @@ with open("txt/banaan.txt", "r") as q:
         if line:
             banaan.append(line)
 
+def quotes2_reload():
+    with open("txt/quotes2.txt", "r") as q:
+        quotes2 = []
+        for line in q:
+            line = line.strip()
+            if line:
+                quotes2.append(line)
+
 class cmds(commands.Cog):
     
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
+
+    @commands.command(aliases = ["discriminatie", "dis"])
+    async def _dis(self, ctx, user:discord.Member = None):
+        if user == None:
+            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert",color = discord.Color.blue())
+        else:
+            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert door {user.mention}",color = discord.Color.blue())
+        await ctx.send(embed = em)
 
     @commands.command(aliases = ["banaan", "bananen", "banan"])
     async def _banaan(self, ctx):
@@ -64,12 +80,13 @@ class cmds(commands.Cog):
 
         for i in File.split("u001c"):
             number += 1
-            print(number)
             if number % 2 == 0:
-                print(i)
                 i = i[:-3]
                 people.append(i)
             else:
+                if "u003d" in i:
+                    i = i.replace("u003d", "=")
+                    i = i.replace("u003c3", "<3")
                 i = i[:-9]
                 people.append(i)
 
