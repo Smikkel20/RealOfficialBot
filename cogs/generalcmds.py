@@ -73,7 +73,6 @@ class cmds(commands.Cog):
         for i in File.split("u001c"):
             number += 1
             if number % 2 == 0:
-                print(i)
                 i = i[:-3]
                 people.append(i)
             else:
