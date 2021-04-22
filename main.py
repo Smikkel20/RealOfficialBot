@@ -60,7 +60,7 @@ async def on_message(ctx):
     #users = get_bank_data()
     try:
         if ctx.channel.name == 'super-secret-quotes':
-            with open("quotes2.txt", "a") as q:
+            with open("txt/quotes2.txt", "a") as q:
                 q.write(f"{message}\n")
                 q.close
                 for filename in os.listdir("./cogs"):
