@@ -7,6 +7,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from dotenv import load_dotenv
 from keep_alive import keep_alive
+from cogs.generalcmds import quotes2_reload
 
 bot = commands.Bot(command_prefix = ";", case_insensitive = True)
 bot.remove_command("help")
@@ -23,11 +24,12 @@ if __name__ == "__main__":
     for filename in os.listdir("./cogs"):
         #check if the filename ends with .py
         if filename.endswith(".py"):
-            try:
-                #load <filename>
-                bot.load_extension(f"cogs.{filename[:-3]}")
-            except Exception as e:
-                print(f"failed to load extension {filename}", file=sys.stderr)
+            if not filename.startswith("__init__.py"):
+                try:
+                    #load <filename>
+                    bot.load_extension(f"cogs.{filename[:-3]}")
+                except Exception as e:
+                    print(f"failed to load extension {filename}", file=sys.stderr)
 
 load_dotenv()
 #get tokens from .env file
@@ -65,11 +67,7 @@ async def on_message(ctx):
             with open("txt/quotes2.txt", "a") as q:
                 q.write(f"{message}\n")
                 q.close
-                for filename in os.listdir("./cogs"):
-                    if filename.endswith("generalcmds.py"):
-                        #reload extensions
-                        bot.unload_extension(f"cogs.{filename[:-3]}")
-                        bot.load_extension(f"cogs.{filename[:-3]}")
+                quotes2_reload()
     except AttributeError:
         dm = True
 
