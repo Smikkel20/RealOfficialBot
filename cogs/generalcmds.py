@@ -30,6 +30,14 @@ with open("txt/banaan.txt", "r") as q:
         if line:
             banaan.append(line)
 
+def quotes2_reload():
+    with open("txt/quotes2.txt", "r") as q:
+        quotes2 = []
+        for line in q:
+            line = line.strip()
+            if line:
+                quotes2.append(line)
+
 class cmds(commands.Cog):
     
     def __init__(self, bot, *args, **kwargs):
