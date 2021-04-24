@@ -86,7 +86,10 @@ class cmds(commands.Cog):
             else:
                 if "u003d" in i:
                     i = i.replace("u003d", "=")
+                if "u003c3" in i:
                     i = i.replace("u003c3", "<3")
+                if "u003e" in i:
+                    i = i.replace("u003e", ">")
                 i = i[:-9]
                 people.append(i)
 
