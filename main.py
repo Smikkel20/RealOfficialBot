@@ -77,6 +77,10 @@ async def on_message(ctx):
         else:
             em = discord.Embed(description = f"{text}" ,color = discord.Color.red())
         await ctx.channel.send(embed = em)
+    
+    if "is dit een dildo" in message.lower():
+        em = discord.Embed(description = f"[dit is een dildo](https://www.amazon.nl/s?k=dildo&__mk_nl_NL=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss)" ,color = discord.Color.blue())
+        await ctx.channel.send(embed = em)
 
     if "hello there" in message.lower():
         em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
