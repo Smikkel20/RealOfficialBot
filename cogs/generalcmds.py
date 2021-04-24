@@ -37,6 +37,7 @@ def quotes2_reload():
             line = line.strip()
             if line:
                 quotes2.append(line)
+    print("done")    
 
 class cmds(commands.Cog):
     
