@@ -136,4 +136,4 @@ class cmds(commands.Cog):
 
 def setup(bot):
     bot.add_cog(cmds(bot))
-    print("General commands has been loaded")
+    print("General commands has been loaded!")
