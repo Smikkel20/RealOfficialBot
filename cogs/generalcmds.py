@@ -42,6 +42,14 @@ class cmds(commands.Cog):
     
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
+    
+    @commands.command(aliases = ["discriminatie", "dis"])
+    async def _dis(self, ctx, user:discord.Member = None):
+        if user == None:
+            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert",color = discord.Color.blue())
+        else:
+            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert door {user.mention}",color = discord.Color.blue())
+        await ctx.send(embed = em)
 
     @commands.command(aliases = ["discriminatie", "dis"])
     async def _dis(self, ctx, user:discord.Member = None):
