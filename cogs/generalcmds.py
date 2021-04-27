@@ -44,6 +44,19 @@ class cmds(commands.Cog):
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
     
+    @commands.command(aliases = ["arda"])
+    async def _arda(self, ctx):
+        URL = "http://api.roblox.com/users/1455250581/onlinestatus"
+        page = requests.get(URL)
+        data = page.json()
+        if data["IsOnline"] == True:
+            status = "online"
+        else:
+            status = "offline"
+
+        em = discord.Embed(title = "Arda strijder", description = f"[Arda](https://www.roblox.com/users/1455250581/profile) is op dit moment **{status}**", color = discord.Color.blue())
+        await ctx.send(embed = em)
+    
     @commands.command(aliases = ["discriminatie", "dis"])
     async def _dis(self, ctx, user:discord.Member = None):
         if user == None:
