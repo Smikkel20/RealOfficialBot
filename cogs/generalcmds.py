@@ -51,14 +51,6 @@ class cmds(commands.Cog):
             em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert door {user.mention}",color = discord.Color.blue())
         await ctx.send(embed = em)
 
-    @commands.command(aliases = ["discriminatie", "dis"])
-    async def _dis(self, ctx, user:discord.Member = None):
-        if user == None:
-            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert",color = discord.Color.blue())
-        else:
-            em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert door {user.mention}",color = discord.Color.blue())
-        await ctx.send(embed = em)
-
     @commands.command(aliases = ["banaan", "bananen", "banan"])
     async def _banaan(self, ctx):
         photo = random.choice(banaan)
@@ -94,8 +86,8 @@ class cmds(commands.Cog):
             else:
                 if "u003d" in i:
                     i = i.replace("u003d", "=")
-                if "u003c3" in i:
-                    i = i.replace("u003c3", "<3")
+                if "u003c" in i:
+                    i = i.replace("u003c", "<")
                 if "u003e" in i:
                     i = i.replace("u003e", ">")
                 i = i[:-9]
