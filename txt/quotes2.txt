@@ -181,3 +181,6 @@ moeder van stasja: *praat russ*   "blyat" -smik   "gijs ik heb geen oortjes in" 
 "Oh ja, ik ga WEER verkracht worden door een konijn" -ron
 "Waarom klink je zo boos smikje?" -Ba "Omdat jullie tering luid zijn" -Smikje "HOUD JE KANKER BEK" -ron
 "Mijn dieet bestaat uit afrikaans"- ron
+"smikkel, stop met microfoonen eten" -chris     "gnauem" -Smikkel
+"als ik ooit 40 word dan ga ik van een gebouw afspringen" -stasja      "waarom dan pas" -storm
+Chris: *schreeuwt (callouts) naar mensen*   Also Chris: "Ik maak vrienden"

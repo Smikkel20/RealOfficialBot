@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 load_dotenv()
 #get tokens from .env file
-TOKEN = os.getenv("REAL_TOKEN")
+TOKEN = os.getenv("TEST_TOKEN")
 
 @bot.event
 async def on_ready():

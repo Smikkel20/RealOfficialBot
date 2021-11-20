@@ -6,7 +6,7 @@ import requests
 import io
 import sys
 from bs4 import BeautifulSoup
-from discord.ext.commands import Bot
+from discord.ext.commands import Bot, bot
 from discord.ext import commands
 
 with open("txt/quotes.txt", "r") as q:
@@ -22,6 +22,13 @@ with open("txt/quotes2.txt", "r") as q:
         line = line.strip()
         if line:
             quotes2.append(line)
+            
+with open("txt/responses.txt", "r") as q:
+    responses = []
+    for line in q:
+        line = line.strip()
+        if line:
+            responses.append(line)
 
 with open("txt/banaan.txt", "r") as q:
     banaan = []
@@ -61,8 +68,20 @@ class cmds(commands.Cog):
     async def _dis(self, ctx, user:discord.Member = None):
         if user == None:
             em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert",color = discord.Color.blue())
+        elif user.id == self.bot.user.id:
+            em = discord.Embed(description = f"Hoe kan ik jou nou hebben gediscrimineert",color = discord.Color.blue())
         else:
             em = discord.Embed(description = f"{ctx.author.mention} voelt zich gediscrimineert door {user.mention}",color = discord.Color.blue())
+        await ctx.send(embed = em)
+    
+    @commands.command(aliases = ["kanker", "kkr"])
+    async def _kanker(self, ctx, user:discord.Member = None):
+        if user == None:
+            em = discord.Embed(description = f"{ctx.author.mention} gebruikt de move **KANKER**!",color = discord.Color.blue())
+        elif user.id == self.bot.user.id:
+            em = discord.Embed(description = f"KRIJG ZELF DE KANKER!",color = discord.Color.blue())
+        else:
+            em = discord.Embed(description = f"{user.mention} krijgt kanker toegewenst door {ctx.author.mention}",color = discord.Color.blue())
         await ctx.send(embed = em)
 
     @commands.command(aliases = ["banaan", "bananen", "banan"])
@@ -145,6 +164,15 @@ class cmds(commands.Cog):
         em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
         
         await ctx.send(embed = em)
+
+    @commands.command(aliases = ["8ball", "ball", "bal", "8bal"])
+    async def _8ball(self, ctx, *, question):
+        response = random.choice(responses)
+
+        embed=discord.Embed(title="De Magische 8 Bal Heeft Gesproken!", color = discord.Color.blue())
+        embed.add_field(name='Vraag: ', value=f'{question}', inline=True)
+        embed.add_field(name='Antwoord: ', value=f'{response}', inline=False)
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
