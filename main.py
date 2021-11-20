@@ -102,17 +102,18 @@ async def ping(ctx):
     await ctx.send(
         f'Pong! {round(bot.latency, 2)} ms!')
 
-#@bot.command()
-#async def reload(ctx):
-#    for filename in os.listdir("./cogs"):
-#        if filename.endswith(".py"):
-#            try:
-#                #reload extensions
-#                bot.unload_extension(f"cogs.{filename[:-3]}")
-#                bot.load_extension(f"cogs.{filename[:-3]}")
-#                await ctx.send(f"Reloaded {filename[:-3]}")
-#            except Exception as e:
-#                print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
+@bot.command()
+async def reload(ctx):
+  if ctx.author.id == 335427967490588672:
+    for filename in os.listdir("./cogs"):
+        if filename.endswith(".py"):
+            try:
+                #reload extensions
+                bot.unload_extension(f"cogs.{filename[:-3]}")
+                bot.load_extension(f"cogs.{filename[:-3]}")
+                await ctx.send(f"Reloaded {filename[:-3]}")
+            except Exception as e:
+                print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
 
 
 

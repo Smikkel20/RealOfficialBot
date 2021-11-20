@@ -205,9 +205,15 @@ class cmds(commands.Cog):
     @commands.command(aliases = ["kill", "vermoord", "schiet", "shenk"])
     async def _kill(self, ctx, user:discord.Member = None):
         kill = random.choice(kill_)
-
-        em = discord.Embed(title = f"{ctx.author.name} vermoord {user.name}" ,color = discord.Color.blue())
-        em.set_image(url=f"{kill}")
+        if ctx.author.id == user.id:
+          em = discord.Embed(title = f"{ctx.author.name} pleegt zelfmoord" ,color = discord.Color.blue())
+          em.set_image(url=f"https://media.giphy.com/media/7K95K2SuBOaBaXXlGH/giphy.gif")
+        elif user.id == self.bot.user.id:
+          em = discord.Embed(title = f"{self.bot.user.name} vermoord {ctx.author.name} op brutale wijze" ,color = discord.Color.blue())
+          em.set_image(url=f"https://media.giphy.com/media/2AY5EiMFmtU082M4nt/giphy.gif")
+        else:
+          em = discord.Embed(title = f"{ctx.author.name} vermoord {user.name}" ,color = discord.Color.blue())
+          em.set_image(url=f"{kill}")
         em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
 
         await ctx.send(embed = em)
