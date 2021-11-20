@@ -9,6 +9,8 @@ from bs4 import BeautifulSoup
 from discord.ext.commands import Bot, bot
 from discord.ext import commands
 
+zelfmoord_text = ["heeft er geen zin meer in.", "heeft leven opgegeven", "chooses the easy way out!", "pleegt Zelfmoord", "ziet het niet meer zitten", "wil dood", "kills himself"]
+kill_text = []
 with open("txt/quotes.txt", "r") as q:
     quotes = []
     for line in q:
@@ -22,7 +24,22 @@ with open("txt/quotes2.txt", "r") as q:
         line = line.strip()
         if line:
             quotes2.append(line)
-            
+
+with open("txt/zelfmoord.txt", "r") as q:
+    zelfmoorden = []
+    for line in q:
+        line = line.strip()
+        if line:
+            zelfmoorden.append(line)
+
+with open("txt/kill.txt", "r") as q:
+    kill_ = []
+    for line in q:
+        line = line.strip()
+        if line:
+            kill_.append(line)
+
+
 with open("txt/responses.txt", "r") as q:
     responses = []
     for line in q:
@@ -173,6 +190,28 @@ class cmds(commands.Cog):
         embed.add_field(name='Vraag: ', value=f'{question}', inline=True)
         embed.add_field(name='Antwoord: ', value=f'{response}', inline=False)
         await ctx.send(embed=embed)
+    
+    @commands.command(aliases = ["dood", "zelfmoord", "suicide", "death"])
+    async def _dood(self, ctx):
+        zelfmoord = random.choice(zelfmoorden)
+        text = random.choice(zelfmoord_text)
+
+        em = discord.Embed(title = f"{ctx.author.name} {text}" ,color = discord.Color.blue())
+        em.set_image(url=f"{zelfmoord}")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
+
+    @commands.command(aliases = ["kill", "vermoord", "schiet", "shenk"])
+    async def _kill(self, ctx, user:discord.Member = None):
+        kill = random.choice(kill_)
+
+        em = discord.Embed(title = f"{ctx.author.name} vermoord {user.name}" ,color = discord.Color.blue())
+        em.set_image(url=f"{kill}")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
+
 
 
 def setup(bot):

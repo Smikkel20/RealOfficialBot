@@ -83,7 +83,7 @@ async def on_message(ctx):
         await ctx.channel.send(embed = em)
 
     if "hello there" in message.lower():
-        em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.red())
+        em = discord.Embed(description = f"General Kenobi." ,color = discord.Color.blue())
         await ctx.channel.send(embed = em)
         em = discord.Embed(description = f"You are a blod one." ,color = discord.Color.red())
         await ctx.channel.send(embed = em)
