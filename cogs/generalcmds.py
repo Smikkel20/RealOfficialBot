@@ -54,6 +54,13 @@ with open("txt/banaan.txt", "r") as q:
         if line:
             banaan.append(line)
 
+with open("txt/robert.txt", "r") as q:
+    robert = []
+    for line in q:
+        line = line.strip()
+        if line:
+            robert.append(line)
+
 def quotes2_reload():
     with open("txt/quotes2.txt", "r") as q:
         quotes2 = []
@@ -106,6 +113,16 @@ class cmds(commands.Cog):
         photo = random.choice(banaan)
         
         em = discord.Embed(color = discord.Color.blue())
+        em.set_image(url=f"{photo}")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
+    
+    @commands.command(aliases = ["robert"])
+    async def _robert(self, ctx):
+        photo = random.choice(robert)
+        
+        em = discord.Embed(description = "*robert*", color = discord.Color.blue())
         em.set_image(url=f"{photo}")
         em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
 
