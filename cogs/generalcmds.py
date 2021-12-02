@@ -9,8 +9,12 @@ from bs4 import BeautifulSoup
 from discord.ext.commands import Bot, bot
 from discord.ext import commands
 
+chantal = ["https://cdn.discordapp.com/attachments/831455559211155476/915265130579759144/IMG_3738.png",
+"https://cdn.discordapp.com/attachments/831455559211155476/915265130290380820/IMG_3766.webp", "https://cdn.discordapp.com/attachments/693545511151599640/915924335783473192/IMG_3849.jpg"]
 zelfmoord_text = ["heeft er geen zin meer in.", "heeft leven opgegeven", "chooses the easy way out!", "pleegt Zelfmoord", "ziet het niet meer zitten", "wil dood", "kills himself"]
 kill_text = []
+
+
 with open("txt/quotes.txt", "r") as q:
     quotes = []
     for line in q:
@@ -39,7 +43,6 @@ with open("txt/kill.txt", "r") as q:
         if line:
             kill_.append(line)
 
-
 with open("txt/responses.txt", "r") as q:
     responses = []
     for line in q:
@@ -52,7 +55,7 @@ with open("txt/banaan.txt", "r") as q:
     for line in q:
         line = line.strip()
         if line:
-            banaan.append(line)
+               banaan.append(line)
 
 with open("txt/robert.txt", "r") as q:
     robert = []
@@ -127,6 +130,36 @@ class cmds(commands.Cog):
         em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
 
         await ctx.send(embed = em)
+    
+    @commands.command(aliases = ["chantal"])
+    async def _chantal(self, ctx):
+        photo = random.choice(chantal)
+        
+        em = discord.Embed(description = "**chantal**", color = discord.Color.blue())
+        em.set_image(url=f"{photo}")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
+
+    @commands.command(aliases = ["mods", "mod"])
+    async def bible(ctx):
+        em = discord.Embed(
+        name = "Mods",
+        description = f"[Mod list 1.18](https://drive.google.com/drive/folders/160_tAz2H9Nr_zDZ11al4yXOx9qopTPsg?usp=sharing)" ,color = discord.Color.red())
+    
+        await ctx.send(embed = em)
+        
+
+    #@commands.command(aliases = ["poll", "vote"])
+    #async def _vote(self, ctx):
+        #photo = random.choice(chantal)
+        
+        #em = discord.Embed(Title = "Vote effe", color = discord.Color.blue())
+        #em.add_field(name='Vraag: ', value=f'{question}', inline=True)
+        #em.set_image(url=f"{photo}")
+        #em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        #await ctx.send(embed = em)
 
     @commands.command(aliases = ["bans"])
     async def _bans(self,ctx):
