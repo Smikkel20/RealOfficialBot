@@ -142,7 +142,7 @@ class cmds(commands.Cog):
         await ctx.send(embed = em)
 
     @commands.command(aliases = ["mods", "mod"])
-    async def bible(ctx):
+    async def _mods(ctx):
         em = discord.Embed(
         name = "Mods",
         description = f"[Mod list 1.18](https://drive.google.com/drive/folders/160_tAz2H9Nr_zDZ11al4yXOx9qopTPsg?usp=sharing)" ,color = discord.Color.red())
