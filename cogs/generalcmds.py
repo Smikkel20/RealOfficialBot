@@ -227,8 +227,11 @@ class cmds(commands.Cog):
     @commands.command(aliases = ["quote", "quotes", "q", "rq"])
     async def _quote(self, ctx):
         quote = random.choice(quotes2)
-        
-        em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
+        if quote == "seks123":
+            em = discord.Embed(color = discord.Color.blue())
+            em.set_image(url="https://cdn.discordapp.com/attachments/794667484367683604/916066341180551228/peagle_rage_quit.png")
+        else:
+            em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
         
         await ctx.send(embed = em)
 
