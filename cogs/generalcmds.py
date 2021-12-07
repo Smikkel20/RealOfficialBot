@@ -10,7 +10,7 @@ from discord.ext.commands import Bot, bot
 from discord.ext import commands
 
 chantal = ["https://cdn.discordapp.com/attachments/831455559211155476/915265130579759144/IMG_3738.png",
-"https://cdn.discordapp.com/attachments/831455559211155476/915265130290380820/IMG_3766.webp", "https://cdn.discordapp.com/attachments/693545511151599640/915924335783473192/IMG_3849.jpg", "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png", "https://cdn.discordapp.com/attachments/695690532633968691/917836728881012736/3DFA8DBC-098D-4D49-A04D-A62AF7F3103E.jpg"]
+"https://cdn.discordapp.com/attachments/831455559211155476/915265130290380820/IMG_3766.webp", "https://cdn.discordapp.com/attachments/693545511151599640/915924335783473192/IMG_3849.jpg", "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png", "https://cdn.discordapp.com/attachments/695690532633968691/917836728881012736/3DFA8DBC-098D-4D49-A04D-A62AF7F3103E.jpg", "https://cdn.discordapp.com/attachments/831455559211155476/917873234316263434/E291B4F6-27D6-41D6-932B-1F7BB58B70E0.jpg"]
 zelfmoord_text = ["heeft er geen zin meer in.", "heeft leven opgegeven", "chooses the easy way out!", "pleegt Zelfmoord", "ziet het niet meer zitten", "wil dood", "kills themself"]
 kill_text = []
 
