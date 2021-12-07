@@ -162,7 +162,7 @@ class cmds(commands.Cog):
         await message.add_reaction(emoji="<:smikkelpog:915176741868298242>")
         await message.add_reaction(emoji="<:distressed:853371062497968128>")
         with open("txt/poll.txt", "a") as q:
-                q.write(f"{message}\n")
+                q.write(f"{message.id}\n")
                 q.close
 
     @commands.command(aliases = ["bans"])
