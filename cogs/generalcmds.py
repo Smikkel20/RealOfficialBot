@@ -10,8 +10,8 @@ from discord.ext.commands import Bot, bot
 from discord.ext import commands
 
 chantal = ["https://cdn.discordapp.com/attachments/831455559211155476/915265130579759144/IMG_3738.png",
-"https://cdn.discordapp.com/attachments/831455559211155476/915265130290380820/IMG_3766.webp", "https://cdn.discordapp.com/attachments/693545511151599640/915924335783473192/IMG_3849.jpg"]
-zelfmoord_text = ["heeft er geen zin meer in.", "heeft leven opgegeven", "chooses the easy way out!", "pleegt Zelfmoord", "ziet het niet meer zitten", "wil dood", "kills himself"]
+"https://cdn.discordapp.com/attachments/831455559211155476/915265130290380820/IMG_3766.webp", "https://cdn.discordapp.com/attachments/693545511151599640/915924335783473192/IMG_3849.jpg", "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png", "https://cdn.discordapp.com/attachments/695690532633968691/917836728881012736/3DFA8DBC-098D-4D49-A04D-A62AF7F3103E.jpg"]
+zelfmoord_text = ["heeft er geen zin meer in.", "heeft leven opgegeven", "chooses the easy way out!", "pleegt Zelfmoord", "ziet het niet meer zitten", "wil dood", "kills themself"]
 kill_text = []
 
 
@@ -131,7 +131,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed = em)
     
-    @commands.command(aliases = ["chantal"])
+    @commands.command(aliases = ["chantal", "chant"])
     async def _chantal(self, ctx):
         photo = random.choice(chantal)
         
@@ -150,16 +150,20 @@ class cmds(commands.Cog):
         await ctx.send(embed = em)
         
 
-    #@commands.command(aliases = ["poll", "vote"])
-    #async def _vote(self, ctx):
-        #photo = random.choice(chantal)
+    @commands.command(aliases = ["poll", "vote"])
+    async def _vote(self, ctx, *,question):
         
-        #em = discord.Embed(Title = "Vote effe", color = discord.Color.blue())
-        #em.add_field(name='Vraag: ', value=f'{question}', inline=True)
-        #em.set_image(url=f"{photo}")
-        #em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+        em = discord.Embed(Title = "Vote effe", color = discord.Color.blue())
+        em.add_field(name='Vraag: ', value=f'{question}', inline=False)
+        em.add_field(name = "Antwoord:", value="<:smikkelpog:915176741868298242> = Yea, <:distressed:853371062497968128> = Nea ")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
 
-        #await ctx.send(embed = em)
+        message = await ctx.send(embed = em)
+        await message.add_reaction(emoji="<:smikkelpog:915176741868298242>")
+        await message.add_reaction(emoji="<:distressed:853371062497968128>")
+        with open("txt/poll.txt", "a") as q:
+                q.write(f"{message}\n")
+                q.close
 
     @commands.command(aliases = ["bans"])
     async def _bans(self,ctx):
