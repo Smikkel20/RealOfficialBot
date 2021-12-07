@@ -54,6 +54,27 @@ async def on_command_error(ctx, error):
         raise error
 
 @bot.event
+async def on_raw_reaction_add(payload):
+    if payload.user_id == bot.user.id:
+        return
+    with open("txt/poll.txt", "r") as q:
+        poll = []
+        for line in q:
+            line = line.strip()
+            if line:
+                poll.append(line)
+    for msg in poll:
+        if str(payload.message_id) == str(msg):
+            channel = bot.get_channel(payload.channel_id)
+            message = await channel.fetch_message(payload.message_id)
+            user = bot.get_user(payload.user_id)
+            if str(payload.emoji) == "<:smikkelpog:915176741868298242>" or str(payload.emoji) == "<:distressed:853371062497968128>":
+                return
+            if not user:
+                user = await bot.fetch_user(payload.user_id)
+            await message.remove_reaction(payload.emoji, user)
+
+@bot.event
 async def on_message(ctx):
     message = str(ctx.content)
     if ctx.author.bot:
