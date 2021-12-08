@@ -142,6 +142,14 @@ class cmds(commands.Cog):
 
         await ctx.send(embed = em)
 
+    @commands.command(aliases = ["sjontal"])
+    async def _sjontal(self, ctx):
+        em = discord.Embed(description = "**sjontal**", color = discord.Color.blue())
+        em.set_image(url=f"https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
+
     @commands.command(aliases = ["mods", "mod"])
     async def _mods(self, ctx):
         em = discord.Embed(
