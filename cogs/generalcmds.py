@@ -135,7 +135,7 @@ class cmds(commands.Cog):
     async def _chantal(self, ctx):
         photo = random.choice(chantal)
         if photo == "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png":
-            em = discord.Embed(description = "**~~chantal~~sjontal**", color = discord.Color.blue())
+            em = discord.Embed(description = "**~~chantal~~ sjontal**", color = discord.Color.blue())
         else:
             em = discord.Embed(description = "**chantal**", color = discord.Color.blue())
         em.set_image(url=f"{photo}")
