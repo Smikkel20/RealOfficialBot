@@ -243,6 +243,9 @@ class cmds(commands.Cog):
         if quote == "seks123":
             em = discord.Embed(color = discord.Color.blue())
             em.set_image(url="https://cdn.discordapp.com/attachments/794667484367683604/916066341180551228/peagle_rage_quit.png")
+        elif quote == "piemol123":
+            em = discord.Embed(color = discord.Color.blue())
+            em.set_image(url="https://cdn.discordapp.com/attachments/700380317764288542/918253271917920256/unknown.png")            
         else:
             em = discord.Embed(description = f"{quote}" ,color = discord.Color.blue())
         
