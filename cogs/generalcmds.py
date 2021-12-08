@@ -136,7 +136,8 @@ class cmds(commands.Cog):
         photo = random.choice(chantal)
         if photo == "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png":
             em = discord.Embed(description = "**~~chantal~~sjontal**", color = discord.Color.blue())
-        em = discord.Embed(description = "**chantal**", color = discord.Color.blue())
+        else:
+            em = discord.Embed(description = "**chantal**", color = discord.Color.blue())
         em.set_image(url=f"{photo}")
         em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
 
@@ -283,6 +284,13 @@ class cmds(commands.Cog):
 
         await ctx.send(embed = em)
 
+    @commands.command(aliases = ["spotify", "wrapped", "spotifywrapped"])
+    async def _spotify(self, ctx):
+        em = discord.Embed(description = "**Niemand vroeg**", color = discord.Color.blue())
+        em.set_image(url=f"https://cdn.discordapp.com/attachments/693545511151599640/915647354919596122/IMG_3604.png")
+        em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
+
+        await ctx.send(embed = em)
 
 
 def setup(bot):
