@@ -89,6 +89,14 @@ async def on_message(ctx):
                 quotes2_reload()
     except AttributeError:
         dm = True
+    try:
+        if ctx.channel.name == 'super-secret-robert':
+            with open("txt/robert.txt", "a") as q:
+                q.write(f"{message}\n")
+                q.close
+                quotes2_reload()
+    except AttributeError:
+        dm = True
 
     if "hoe werkt seks" in message.lower():
         text = random.choice(seks)
