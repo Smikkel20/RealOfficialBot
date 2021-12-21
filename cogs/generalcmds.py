@@ -121,7 +121,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed = em)
     
-    @commands.command(aliases = ["robert"])
+    @commands.command(aliases = ["robert", "robje", "rob"])
     async def _robert(self, ctx):
         photo = random.choice(robert)
         
