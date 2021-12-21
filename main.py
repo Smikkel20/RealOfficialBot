@@ -7,7 +7,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 from dotenv import load_dotenv
 from keep_alive import keep_alive
-from cogs.generalcmds import quotes2_reload
+from cogs.generalcmds import quotes2_reload, robert_reload
 
 bot = commands.Bot(command_prefix = ";", case_insensitive = True)
 bot.remove_command("help")
@@ -94,7 +94,7 @@ async def on_message(ctx):
             with open("txt/robert.txt", "a") as q:
                 q.write(f"{message}\n")
                 q.close
-                quotes2_reload()
+                robert_reload()
     except AttributeError:
         dm = True
 
