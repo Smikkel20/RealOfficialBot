@@ -148,4 +148,4 @@ async def reload(ctx):
 
 
 keep_alive()
-bot.run(TOKEN)
+bot.run(os.getenv("REAL_TOKEN"))
