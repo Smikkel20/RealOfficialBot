@@ -8,6 +8,7 @@ import sys
 from bs4 import BeautifulSoup
 from discord.ext.commands import Bot, bot
 from discord.ext import commands
+from discord import app_commands
 
 chantal = [
     "https://cdn.discordapp.com/attachments/695690532633968691/918177532833058816/IMG_0573.png",
@@ -103,7 +104,7 @@ class cmds(commands.Cog):
     def __init__(self, bot, *args, **kwargs):
         self.bot = bot
 
-    @commands.command(aliases=["arda"])
+    @commands.hybrid_command(name="arda", with_app_command = True, description = "Leeft Arda uberhaupt nog?")
     async def _arda(self, ctx):
         URL = "http://api.roblox.com/users/1455250581/onlinestatus"
         page = requests.get(URL)
@@ -120,7 +121,7 @@ class cmds(commands.Cog):
             color=discord.Color.blue())
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["discriminatie", "dis"])
+    @commands.hybrid_command(name="discriminatie", aliases=["dis"], with_app_command = True, description = "De enige echte command voor als je je gediscrimineerd voelt")
     async def _dis(self, ctx, user: discord.Member = None):
         if user == None:
             em = discord.Embed(
@@ -137,7 +138,7 @@ class cmds(commands.Cog):
                 color=discord.Color.blue())
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["kanker", "kkr"])
+    @commands.hybrid_command(name="kanker", aliases=["kkr"], with_app_command = True, description = "Soms moet je gewoon even met kanker schelden, en dat mag allemaal.")
     async def _kanker(self, ctx, user: discord.Member = None):
         if user == None:
             em = discord.Embed(
@@ -154,7 +155,7 @@ class cmds(commands.Cog):
                 color=discord.Color.blue())
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["banaan", "bananen", "banan"])
+    @commands.hybrid_command(name="banaan", aliases=["bananen", "banan", "bananan"], with_app_command = True, description = "Banananchrus")
     async def _banaan(self, ctx):
         photo = random.choice(banaan)
 
@@ -168,7 +169,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["robert", "robje", "rob", "bas", "basje", "Басик","Бас"])
+    @commands.hybrid_command(name="rob", aliases=["robert", "robje", "bas", "basje", "Басик","Бас"], with_app_command = True, description = "Ben je Rob? Zeg het hardop")
     async def _robert(self, ctx):
         photo = random.choice(robert)
 
@@ -182,7 +183,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["chantal", "chant"])
+    @commands.hybrid_command(name="chantal", aliases=["chant"], with_app_command = True, description = "Chantal")
     async def _chantal(self, ctx):
         photo = random.choice(chantal)
         if photo == "https://cdn.discordapp.com/attachments/794667484367683604/917815028982353941/IMG_3987.png":
@@ -200,7 +201,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["sjontal"])
+    @commands.hybrid_command(name="sjontal", with_app_command = True, description = "Sjontal")
     async def _sjontal(self, ctx):
         em = discord.Embed(description="**sjontal**",
                            color=discord.Color.blue())
@@ -216,17 +217,17 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["mods", "mod"])
+    @commands.hybrid_command(name="mods", aliases=["mod"],with_app_command = True, description = "Welke mods gebruikt deze jongen nu weer, je kan het hier allemaal zien.")
     async def _mods(self, ctx):
         em = discord.Embed(
             name="Mods",
             description=
-            f"[Mod list 1.18](https://drive.google.com/drive/folders/160_tAz2H9Nr_zDZ11al4yXOx9qopTPsg?usp=sharing)",
+            f"[Mod list 1.19](https://drive.google.com/drive/folders/160_tAz2H9Nr_zDZ11al4yXOx9qopTPsg?usp=sharing)",
             color=discord.Color.red())
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["poll", "vote"])
+    @commands.hybrid_command(name="poll", aliases=["vote"], with_app_command = True, description = "Stel een vraag aan de server.")
     async def _vote(self, ctx, *, question):
 
         em = discord.Embed(Title="Vote effe", color=discord.Color.blue())
@@ -249,7 +250,7 @@ class cmds(commands.Cog):
             q.write(f"{message.id}\n")
             q.close
 
-    @commands.command(aliases=["bans"])
+    @commands.hybrid_command(name="bans", with_app_command = True, description = "Wie heeft onze al machtige god allemaal verbannen?")
     async def _bans(self, ctx):
         URL = "https://docs.google.com/document/d/1IqqL4FtKwvp9mmO2QAljmAGeadSCI2bu1C7W-OSXwig/edit"
         page = requests.get(URL)
@@ -303,8 +304,7 @@ class cmds(commands.Cog):
                 name = i
         await ctx.send(embed=em)
 
-    @commands.command(
-        aliases=["swquotes", "starwars", "starwarsquotes", "sw", "swq"])
+    @commands.hybrid_command(name="sw", aliases=["swquotes", "starwars", "starwarsquotes", "swq"], with_app_command = True, description = "Alle prequel quotes, letterlijk allemaal.")
     async def _sw(self, ctx):
         quote = random.choice(quotes)
 
@@ -316,7 +316,7 @@ class cmds(commands.Cog):
                                color=discord.Color.red())
             await ctx.send(embed=em)
 
-    @commands.command(aliases=["quote", "quotes", "q", "rq"])
+    @commands.hybrid_command(name="q", aliases=["quote", "quotes", "rq"], with_app_command = True, description = "De enige echte cult quotes, zelfs de klassieke.")
     async def _quote(self, ctx):
         quote = random.choice(quotes2)
         if quote == "seks123":
@@ -337,7 +337,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["8ball", "ball", "bal", "8bal"])
+    @commands.hybrid_command(name="8ball", aliases=["ball", "bal", "8bal"], with_app_command = True, description = "Vraag de almachtige 8bal een vraag")
     async def _8ball(self, ctx, *, question):
         response = random.choice(responses)
 
@@ -347,7 +347,7 @@ class cmds(commands.Cog):
         embed.add_field(name='Antwoord: ', value=f'{response}', inline=False)
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=["dood", "zelfmoord", "suicide", "death"])
+    @commands.hybrid_command(name="zelfmoord", aliases=["dood", "suicide", "death"],with_app_command = True, description = "Zelfmoord in Discord, oja en iets met 113.")
     async def _dood(self, ctx):
         zelfmoord = random.choice(zelfmoorden)
         text = random.choice(zelfmoord_text)
@@ -363,7 +363,7 @@ class cmds(commands.Cog):
 
         await ctx.send(embed=em)
 
-    @commands.command(aliases=["kill", "vermoord", "schiet", "shenk"])
+    @commands.hybrid_command(name="kill", aliases=["vermoord", "schiet", "shenk"], with_app_command = True, description = "Als je iemand heel graag dood wil hebben.")
     async def _kill(self, ctx, user: discord.Member = None):
         kill = random.choice(kill_)
         if ctx.author.id == user.id:
@@ -409,6 +409,6 @@ class cmds(commands.Cog):
         await ctx.send(embed=em)
 
 
-def setup(bot):
-    bot.add_cog(cmds(bot))
+async def setup(bot):
+    await bot.add_cog(cmds(bot))
     print("General commands has been loaded!")

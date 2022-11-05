@@ -3,6 +3,7 @@ import os
 import random
 from discord.ext.commands import Bot
 from discord.ext import commands
+from discord import app_commands
 
 class Helpcommand(commands.Cog):
     
@@ -10,7 +11,7 @@ class Helpcommand(commands.Cog):
         self.bot = bot
     
     #Creates subcommand for help
-    @commands.command()
+    @commands.hybrid_command(name = "help", with_app_command = True, description = "Shows list of commands")
     async def help(self, ctx):
         em = discord.Embed(title = "Help", color = discord.Color.blue())
         em.add_field(name = "`;bible`", value = "gebruik `;bible` voor de link naar de Real Official Bible", inline=False)             
@@ -30,6 +31,6 @@ class Helpcommand(commands.Cog):
         em.set_footer(text="Send by the real official bot", icon_url="https://media.discordapp.net/attachments/798901280092454943/824375361365475368/image0.png")
         await ctx.send(embed = em)
 
-def setup(bot):
-    bot.add_cog(Helpcommand(bot))
+async def setup(bot):
+    await bot.add_cog(Helpcommand(bot))
     print("Help has been loaded")

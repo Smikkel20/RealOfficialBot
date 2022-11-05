@@ -8,8 +8,10 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from keep_alive import keep_alive
 from cogs.generalcmds import quotes2_reload, robert_reload
+from discord import app_commands
 
-bot = commands.Bot(command_prefix = ";", case_insensitive = True)
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix = ";", case_insensitive = True, intents=intents, owner_id = 335427967490588672)
 bot.remove_command("help")
 
 with open("txt/seks.txt", "r") as q:
@@ -18,18 +20,6 @@ with open("txt/seks.txt", "r") as q:
         line = line.strip()
         if line:
             seks.append(line)
-
-if __name__ == "__main__":
-    #get every file in ./cogs dir
-    for filename in os.listdir("./cogs"):
-        #check if the filename ends with .py
-        if filename.endswith(".py"):
-            if not filename.startswith("__init__.py"):
-                try:
-                    #load <filename>
-                    bot.load_extension(f"cogs.{filename[:-3]}")
-                except Exception as e:
-                    print(f"failed to load extension {filename}", file=sys.stderr)
 
 load_dotenv()
 #get tokens from .env file
@@ -45,13 +35,43 @@ async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="The real official bible", url="https://docs.google.com/document/d/1IqqL4FtKwvp9mmO2QAljmAGeadSCI2bu1C7W-OSXwig/edit?usp=drivesdk"))
     print('activity set')
     print('---------------')
+    #get every file in ./cogs dir
+
+
+@bot.event
+async def setup_hook():
+    print('===============')
+    print("Loading Cogs")
+    print('===============')
+    for filename in os.listdir("./cogs"):
+        #check if the filename ends with .py
+        if filename.endswith(".py"):
+            if not filename.startswith("__init__.py"):
+                try:
+                    #load <filename>
+                    await bot.load_extension(f"cogs.{filename[:-3]}")
+                except Exception as e:
+                    print(e)
+                    print(f"failed to load extension {filename}", file=sys.stderr)
+    print('===============')
+    print("All Cogs loaded")
+    print('===============')
+
+    print('---------------')
+    print("Syncing slash")
+    await bot.tree.sync()
+    print("Synced slash")
+    print('---------------')
 
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.errors.CommandNotFound):
         return
+    if isinstance(error, commands.errors.NotOwner):
+        await ctx.reply(error, ephemeral = True)
     else:
         raise error
+
 
 @bot.event
 async def on_raw_reaction_add(payload):
@@ -118,31 +138,29 @@ async def on_message(ctx):
         await ctx.channel.send(embed = em)
     await bot.process_commands(ctx)
 
-@bot.command()
+@bot.hybrid_command(name="bible", with_app_command = True, description = "Lees hier the Real Offical bible")
 async def bible(ctx):
-    em = em = discord.Embed(
-        name = "The real official bible",
-        description = f"[The real official bible](https://docs.google.com/document/d/1IqqL4FtKwvp9mmO2QAljmAGeadSCI2bu1C7W-OSXwig/edit?usp=drivesdk)" ,color = discord.Color.red())
+    em = discord.Embed(title = "The real official bible", description = f"[The real official bible](https://docs.google.com/document/d/1IqqL4FtKwvp9mmO2QAljmAGeadSCI2bu1C7W-OSXwig/edit?usp=drivesdk)" ,color = discord.Color.red())
     
     await ctx.send(embed = em)
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send(
-        f'Pong! {round(bot.latency, 2)} ms!')
+    await ctx.send(f'Pong! {round(bot.latency, 2)} ms!')
 
-@bot.command()
+@bot.hybrid_command(name="reload", with_app_command = True, description = "Reload cogs")
+@commands.is_owner()
 async def reload(ctx):
-  if ctx.author.id == 335427967490588672:
     for filename in os.listdir("./cogs"):
         if filename.endswith(".py"):
-            try:
-                #reload extensions
-                bot.unload_extension(f"cogs.{filename[:-3]}")
-                bot.load_extension(f"cogs.{filename[:-3]}")
-                await ctx.send(f"Reloaded {filename[:-3]}")
-            except Exception as e:
-                print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
+            if not filename.startswith("__init__.py"):
+                try:
+                    #reload extensions
+                    await bot.unload_extension(f"cogs.{filename[:-3]}")
+                    await bot.load_extension(f"cogs.{filename[:-3]}")
+                    await ctx.send(f"Reloaded {filename[:-3]}")
+                except Exception as e:
+                    print(f"failed to reload extension cogs.{filename[:-3]}", file=sys.stderr)
 
 
 
