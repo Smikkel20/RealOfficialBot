@@ -37,7 +37,6 @@ async def on_ready():
     print('---------------')
     #get every file in ./cogs dir
 
-
 @bot.event
 async def setup_hook():
     print('===============')
@@ -71,7 +70,6 @@ async def on_command_error(ctx, error):
         await ctx.reply(error, ephemeral = True)
     else:
         raise error
-
 
 @bot.event
 async def on_raw_reaction_add(payload):
@@ -166,4 +164,8 @@ async def reload(ctx):
 
 
 keep_alive()
-bot.run(os.getenv("REAL_TOKEN"))
+
+try:
+    bot.run(os.getenv("REAL_TOKEN"))
+except:
+    os.system("kill 1")
