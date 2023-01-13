@@ -230,7 +230,7 @@ class cmds(commands.Cog):
     @commands.hybrid_command(name="poll", aliases=["vote"], with_app_command = True, description = "Stel een vraag aan de server.")
     async def _vote(self, ctx, *, question):
 
-        em = discord.Embed(Title="Vote effe", color=discord.Color.blue())
+        em = discord.Embed(title="Vote effe", color=discord.Color.blue())
         em.add_field(name='Vraag: ', value=f'{question}', inline=False)
         em.add_field(
             name="Antwoord:",
@@ -244,8 +244,8 @@ class cmds(commands.Cog):
         )
 
         message = await ctx.send(embed=em)
-        await message.add_reaction(emoji="<:smikkelpog:915176741868298242>")
-        await message.add_reaction(emoji="<:distressed:853371062497968128>")
+        await message.add_reaction(ctx.bot.get_emoji(915176741868298242))
+        await message.add_reaction(ctx.bot.get_emoji(853371062497968128))
         with open("txt/poll.txt", "a") as q:
             q.write(f"{message.id}\n")
             q.close
